@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9108f74a-311f-435c-894e-3f17175ce678" name="Changes" comment="" />
+    <list default="true" id="9108f74a-311f-435c-894e-3f17175ce678" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/java/apap/tutorial/cineplux/controller/BioskopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/java/apap/tutorial/cineplux/model/BioskopModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/java/apap/tutorial/cineplux/service/BioskopInMemoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/java/apap/tutorial/cineplux/service/BioskopService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/add-bioskop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/delete-bioskop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/no-bioskop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/update-bioskop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/view-bioskop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/21cineplux/src/main/resources/templates/viewall-bioskop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +43,10 @@
       <option name="presentableId" value="Default" />
       <updated>1631692846194</updated>
       <workItem from="1631692849064" duration="625000" />
-      <workItem from="1631693752116" duration="2641000" />
+      <workItem from="1631693752116" duration="2953000" />
+      <workItem from="1631699657570" duration="80000" />
+      <workItem from="1631699789443" duration="514000" />
+      <workItem from="1631716218520" duration="2232000" />
     </task>
     <servers />
   </component>
@@ -47,5 +63,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
