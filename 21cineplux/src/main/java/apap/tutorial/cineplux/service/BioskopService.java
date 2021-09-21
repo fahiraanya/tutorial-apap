@@ -15,4 +15,6 @@ public interface BioskopService {
 
 // Method untuk menghapus Bioskop
     void removeBioskop(BioskopModel bioskop);
+
+    List<BioskopModel> getSemuaBioskopByIdBioskop(String idBioskop);
 }

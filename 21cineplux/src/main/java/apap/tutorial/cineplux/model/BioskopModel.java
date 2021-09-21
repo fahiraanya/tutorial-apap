@@ -1,6 +1,10 @@
 package apap.tutorial.cineplux.model;
 
+import java.sql.Array;
+import java.util.ArrayList;
+
 public class BioskopModel {
+    private final ArrayList<BioskopModel> listSemuaBioskop;
     private String idBioskop;
 
     public BioskopModel(String idBioskop, String namaBioskop, String alamat, String noTelepon, int jumlahStudio) {
@@ -9,12 +13,14 @@ public class BioskopModel {
         this.alamat = alamat;
         this.noTelepon = noTelepon;
         this.jumlahStudio = jumlahStudio;
+        this.listSemuaBioskop = new ArrayList<>();
     }
 
     private String namaBioskop;
     private String alamat;
     private String noTelepon;
     private int jumlahStudio;
+    
 
     public String getIdBioskop() {
         return idBioskop;
@@ -55,4 +61,5 @@ public class BioskopModel {
     public void setJumlahStudio(int jumlahStudio) {
         this.jumlahStudio = jumlahStudio;
     }
+
 }

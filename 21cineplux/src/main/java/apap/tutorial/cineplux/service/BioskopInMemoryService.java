@@ -4,6 +4,7 @@ import apap.tutorial.cineplux.model.BioskopModel;
 import ch.qos.logback.core.util.COWArrayList;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,16 @@ public class BioskopInMemoryService implements BioskopService {
             }
         }
         return null;
+    }
+    @Override
+    public List<BioskopModel> getSemuaBioskopByIdBioskop (String idBioskop) {
+        List listSemuaBioskop = new ArrayList<>();
+        for (BioskopModel a: listBioskop) {
+            if (a.getIdBioskop().equals(idBioskop)) {
+                listSemuaBioskop.add(a);
+            }
+        }
+        return listSemuaBioskop;
     }
     @Override
     public void removeBioskop(BioskopModel bioskop) {

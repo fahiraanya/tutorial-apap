@@ -78,6 +78,23 @@ public class BioskopController {
         model.addAttribute("bioskop", bioskopModel);
         return "view-bioskop";
     }
+    @RequestMapping("bioskop/view-semua/id-bioskop/{idBioskop}")
+    public String viewSemuaBioskopByIdWithPathVariable(
+            @PathVariable(value = "idBioskop") String idBioskop,
+            Model model
+    ) {
+        // Mendapatkan bioskop sesuai dengan idBioskop
+        List<BioskopModel> bioskopModel = bioskopService.getSemuaBioskopByIdBioskop(idBioskop);
+
+        // Cek bioskop
+        if (bioskopModel == null) {
+            return "no-bioskop";
+        }
+        // Add variable BioskopModel ke 'bioskop' untuk dirende dalam thymeleaf
+        model.addAttribute("bioskop", bioskopModel);
+        return "view-bioskop";
+    }
+
     @RequestMapping("bioskop/update/id-bioskop/{idBioskop}/jumlah-studio/{jumlahStudio}")
     public String uodateJumlahStudioWithPathVariable(
             @PathVariable(value = "idBioskop") String idBioskop,
