@@ -1,58 +1,61 @@
 package apap.tutorial.cineplux.model;
 
-public class BioskopModel {
-    private String idBioskop;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.format.annotation.DateTimeFormat;
 
-    public BioskopModel(String idBioskop, String namaBioskop, String alamat, String noTelepon, int jumlahStudio) {
-        this.idBioskop = idBioskop;
-        this.namaBioskop = namaBioskop;
-        this.alamat = alamat;
-        this.noTelepon = noTelepon;
-        this.jumlahStudio = jumlahStudio;
-    }
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.time.LocalTime;
+import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter @Getter
+@Entity
+@Table(name = "bioskop")
+public class BioskopModel implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long noBioskop;
+
+    @NotNull
+    @Size(max = 30)
+    @Column(nullable = false)
     private String namaBioskop;
-    private String alamat;
-    private String noTelepon;
-    private int jumlahStudio;
 
-    public String getIdBioskop() {
-        return idBioskop;
-    }
+    @NotNull
+    @Column(nullable = false)
+    private String alamatBioskop;
 
-    public void setIdBioskop(String idBioskop) {
-        this.idBioskop = idBioskop;
-    }
+    @NotNull
+    @Column(nullable = false)
+    private Integer jumlahStudio;
 
-    public String getNamaBioskop() {
-        return namaBioskop;
-    }
+    @NotNull
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime waktuBuka;
 
-    public void setNamaBioskop(String namaBioskop) {
-        this.namaBioskop = namaBioskop;
-    }
+    @NotNull
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "HH:mm")
+    private LocalTime waktuTutup;
 
-    public String getAlamat() {
-        return alamat;
-    }
+    @OneToMany(mappedBy = "bioskop", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PenjagaModel> listPenjaga;
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
-    }
-
-    public String getNoTelepon() {
-        return noTelepon;
-    }
-
-    public void setNoTelepon(String noTelepon) {
-        this.noTelepon = noTelepon;
-    }
-
-    public int getJumlahStudio() {
-        return jumlahStudio;
-    }
-
-    public void setJumlahStudio(int jumlahStudio) {
-        this.jumlahStudio = jumlahStudio;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "film_bioskop",
+            joinColumns = @JoinColumn(name = "no_bioskop"),
+            inverseJoinColumns = @JoinColumn(name = "no_film")
+    )
+    List<FilmModel> listFilm;
 }
