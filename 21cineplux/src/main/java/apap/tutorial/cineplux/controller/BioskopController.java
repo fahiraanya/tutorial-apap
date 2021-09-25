@@ -72,6 +72,12 @@ public class BioskopController {
             @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
+        List<BioskopModel> listBioskop = bioskopService.getBioskopList();
+        for (BioskopModel a : listBioskop) {
+            if (a.getNamaBioskop().equalsIgnoreCase(bioskop.getNamaBioskop())) {
+                return "update-bioskop-fail";
+            }
+        }
         bioskopService.updateBioskop(bioskop);
         model.addAttribute("noBioskop",bioskop.getNoBioskop());
         return "update-bioskop";
