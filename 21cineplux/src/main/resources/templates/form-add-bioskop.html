@@ -3,11 +3,15 @@
 
 <head>
     <title>21 Cineplux</title>
+    <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
+<nav th:replace="fragments/fragment :: navbar('bioskop')"></nav>
     <div class="container">
         <div class="card m-4 p-4">
             <div class="card-body">
@@ -16,26 +20,70 @@
                     <br>
                     <form th:action="@{/bioskop/add}" th:object="${bioskop}" method="POST">
                         Nama Bioskop : <br>
-                        <input required class="form-control" type="text" name="namaBioskop" />
+                        <input required class="form-control" type="text" name="namaBioskop" th:value="*{namaBioskop}"/>
                         <br><br>
 
                         Alamat Bioskop: <br>
-                        <input required class="form-control" type="text" name="alamatBioskop" />
+                        <input required class="form-control" type="text" name="alamatBioskop" th:value="*{alamatBioskop}"/>
                         <br><br>
 
                         Jumlah Studio : <br>
-                        <input required min="0" class="form-control" type="number" name="jumlahStudio" />
+                        <input required min="0" class="form-control" type="number" name="jumlahStudio" th:value="*{jumlahStudio}"/>
                         <br><br>
 
                         Waktu Buka : <br>
-                        <input required class="form-control" type="time" name="waktuBuka" />
+                        <input required class="form-control" type="time" name="waktuBuka" th:value="*{waktuBuka}"/>
                         <br><br>
 
                         Waktu Tutup : <br>
-                        <input required class="form-control" type="time" name="waktuTutup" />
-                        <br><br>
+                        <input required class="form-control" type="time" name="waktuTutup" th:value="*{waktuBuka}"/>
+                        <br>
+                        <br>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <th>Nama Film</th>
+                                    <th><input class="btn btn-primary" type="submit" name="addRow" value="Tambah Row"></th>
+                                </thead>
+                                <tbody>
+                                <tr th:each="film, iterationStatus : *{listFilm}">
+                                    <td>
+                                        <select th:field="*{listFilm[__${iterationStatus.index}__].noFilm}" class="form-control">
+                                            <option th:each="film : ${listFilm}"
+                                                    th:text="${film.namaFilm}"
+                                                    th:value="${film.noFilm}">
+                                            </option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button th:value="${iterationStatus.index}" class="btn btn-danger" type="submit" name="deleteRow">Hapus</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-                        <button class="btn btn-primary" type="submit">Submit</button>
+<!--                        <div class="row">-->
+<!--                            <div class="col-6">-->
+<!--                                <label>Nama Film</label>-->
+<!--                            </div>-->
+<!--                            <div class="col-6">-->
+<!--                                <button class="btn btn-primary" type="submit" name=“addRow”>Tambah row</button>-->
+<!--                            </div>-->
+<!--                            <hr>-->
+<!--                            <div class="col-6">-->
+<!--                                <select>-->
+<!--                                    <option th:each="film : ${listFilm}">-->
+<!--                                        <span th:text="${film.namaFilm}"></span>-->
+<!--                                    </option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                            <div class="col-6">-->
+<!--                                <button class="btn btn-danger" name=“deleteRow”>Hapus</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <button class="btn btn-primary" type="submit" name="save">Submit</button>
                         <a class="btn btn-primary" href="/">Home</a>
                     </form>
                 </div>

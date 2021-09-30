@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Penjaga tidak ditemukan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar('bioskop')"></nav>
 <h2 th:text="'Penjaga tidak ditemukan'" ></h2>
 <a href="/bioskop/viewall">Kembali</a>
 </body>
