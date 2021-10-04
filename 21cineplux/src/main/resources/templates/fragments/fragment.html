@@ -51,6 +51,8 @@
         </form>
     </div>
 </nav>
+<div th:fragment="footer" class="fixed-bottom">
+    <p th:text="${#dates.format(#dates.createNow(),'YYYY/MM/dd HH:mm')}"></p>
 </div>
 </body>
 </html>
