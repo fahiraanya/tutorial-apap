@@ -4,7 +4,6 @@ import apap.tutorial.cineplux.model.BioskopModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.BioskopDB;
 import apap.tutorial.cineplux.repository.PenjagaDB;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +47,13 @@ public class PenjagaServiceImpl implements PenjagaService{
         return penjaga;
     }
     @Override
-    public void deletePenjaga(PenjagaModel penjaga) { penjagaDB.delete(penjaga); }
+    public int deletePenjaga(PenjagaModel penjaga) {
+        LocalTime now = LocalTime.now();
+        BioskopModel bioskop = bioskopDB.findByNoBioskop(penjaga.getBioskop().getNoBioskop()).get();
+        if (now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup())) {
+            penjagaDB.delete(penjaga);
+            return 1;
+        }
+        return 0;
+    }
 }

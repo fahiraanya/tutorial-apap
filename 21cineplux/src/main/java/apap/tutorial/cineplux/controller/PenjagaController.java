@@ -85,4 +85,20 @@ public class PenjagaController {
             return "delete-penjaga-fail";
         }
     }
+    @PostMapping("/penjaga/delete")
+    public String deletePenjagaSubmit(
+            @ModelAttribute BioskopModel bioskop,
+            Model model
+    ) {
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        int res = 1;
+        for (PenjagaModel penjaga:
+                bioskop.getListPenjaga()) {
+            res = penjagaService.deletePenjaga(penjaga);
+        }
+        if (res == 1){
+            return "delete-penjaga";
+        }
+        return "error";
+    }
 }
