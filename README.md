@@ -2,6 +2,23 @@
 ## Authors
 * **Fahira Anya Katili** - *1906399770* - *C*
 ---
+## Tutorial 5
+### Pertanyaan
+1. Apa itu Postman? Apa kegunaannya?
+* Postman adalah aplikasi yang berfungsi REST CLIENT yang biasa digunakan developer untuk menguji API yang telah dibuat. Pada awalnya, Postman merupakan add on pada Chrome, tetapi sekarang sudah menjadi aplikasi native. Fungsi utama dari aplikasi ini adalah adalah sebagai GUI API Caller. 
+
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+* @JsonIgnoreProperties merupakan anotasi yang digunakan untuk menandai property atau sekumpulan property yang akan diabaikan. Anotasi ini digunakan pada level Class
+* @JsonProperty merupakan anotasi yang digunakan untuk mengindikasi nama property pada JSON. Biasanya, anotasi ini digunakan untuk serialize atau deserialize nama property ketika sedang berurusan dengan non-standard setter dan getter.
+
+3. Apa kegunaan atribut WebClient?
+* Atribut WebClient yang digunakan pada restServiceImpl berfungsi untukmengirim dan menerima data dari resource URI.
+
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+* ResponseEntity merupakan perwakilan seluruh respons HTTP. Dengan ResponseEntity, kita dapat mengontrol status code yang ditandai dengan @ResponseStatus, header, dan body yang ditandai dengan @ResponseBody.
+* BindingResult merupakan sebuah interface yang menentukan bagaimana suatu object menyimpan dan mengambil hasil dari suatu validasi. Object BindingResult dapat dijadikan argumen untuk method Validator di dalam Controller.
+
+---
 ## Tutorial 3
 ### Pertanyaan
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)

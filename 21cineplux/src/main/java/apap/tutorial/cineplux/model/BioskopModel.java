@@ -20,7 +20,6 @@ import java.util.List;
 @Entity
 @Table(name = "bioskop")
 public class BioskopModel implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long noBioskop;
