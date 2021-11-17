@@ -2,25 +2,22 @@
 ## Authors
 * **Fahira Anya Katili** - *1906399770* - *C*
 ---
-## Tutorial 4
+## Tutorial 5
 ### Pertanyaan
-1.    Jelaskan perbedaan th:include dan th:replace! 
-* th:include, misalnya terdapat kode: <div th:include=”..”> content </div>, berarti konten pada fragment akan dimasukkan kedalam tag <div> (host’s tag).
-* th:replace, misalnya terdapat kode: <div th:include=”..”> content </div>, berarti tag <div> (host’s tag) akan diubah menjadi tag pada fragment.
+1. Apa itu Postman? Apa kegunaannya?
+* Postman adalah aplikasi yang berfungsi REST CLIENT yang biasa digunakan developer untuk menguji API yang telah dibuat. Pada awalnya, Postman merupakan add on pada Chrome, tetapi sekarang sudah menjadi aplikasi native. Fungsi utama dari aplikasi ini adalah adalah sebagai GUI API Caller. 
 
-Referensi: https://stackoverflow.com/questions/37103958/difference-between-thymeleaf-include-and-replace
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+* @JsonIgnoreProperties merupakan anotasi yang digunakan untuk menandai property atau sekumpulan property yang akan diabaikan. Anotasi ini digunakan pada level Class
+* @JsonProperty merupakan anotasi yang digunakan untuk mengindikasi nama property pada JSON. Biasanya, anotasi ini digunakan untuk serialize atau deserialize nama property ketika sedang berurusan dengan non-standard setter dan getter.
 
-2.    Jelaskan apa fungsi dari th:object! 
-Th:object wajib digunakan pada tag form pada thymeleaf, yang berfungsi untuk menandakan model attribute mana yang akan disubmit. Berikut contoh pemakaiannya.
-<form th:action="@{/penjaga/delete}" th:object="${bioskop}" method="POST">
+3. Apa kegunaan atribut WebClient?
+* Atribut WebClient yang digunakan pada restServiceImpl berfungsi untukmengirim dan menerima data dari resource URI.
 
-Referensi: https://www.baeldung.com/thymeleaf-in-spring-mvc
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+* ResponseEntity merupakan perwakilan seluruh respons HTTP. Dengan ResponseEntity, kita dapat mengontrol status code yang ditandai dengan @ResponseStatus, header, dan body yang ditandai dengan @ResponseBody.
+* BindingResult merupakan sebuah interface yang menentukan bagaimana suatu object menyimpan dan mengambil hasil dari suatu validasi. Object BindingResult dapat dijadikan argumen untuk method Validator di dalam Controller.
 
-3.    Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai? 
-*{…} atau biasa disebut asterisk syntax pada th:object dipakai untuk mengevaluasi suatu object, sedangkan ${…} dipakai untuk mengevaluasi konteks variable secara keseluruhan. Berikut contoh pemakaiannya agar lebih jelas.
-th:field="*{listPenjaga}" th:value="${penjaga.noPenjaga}"
-
-Referensi: https://stackoverflow.com/questions/58976993/what-is-the-difference-between-thfield-something-and-thfield-something
 ---
 ## Tutorial 3
 ### Pertanyaan
