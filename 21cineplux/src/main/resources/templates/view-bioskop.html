@@ -41,8 +41,8 @@
           <td th:text="${iterationStatus.count}"></td>
           <td th:text="${penjaga.noPenjaga}"></td>
           <td th:text="${penjaga.namaPenjaga}"></td>
-          <td th:if="${penjaga.jenisKelamin} == 0">Laki-Laki</td>
-          <td th:if="${penjaga.jenisKelamin} == 1">Perempuan</td>
+          <td th:if="${penjaga.jenisKelamin} == 1">Laki-Laki</td>
+          <td th:if="${penjaga.jenisKelamin} == 0">Perempuan</td>
           <td><a th:href="@{/penjaga/update/}+${penjaga.noPenjaga}" class="btn btn-outline-secondary">Ubah</a></td>
           <td>
             <input class="form-check-input" type="checkbox"
