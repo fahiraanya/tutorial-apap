@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Delete Bioskop</title>
+    <meta charset="UTF-8">
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar('bioskop')"></nav>
     <h2 th:text="'Bioskop dengan nama ' + ${bioskop.namaBioskop} + ' berhasil dihapus.'"></h2>
     <a href="/bioskop/viewall">Kembali</a>
 </body>
