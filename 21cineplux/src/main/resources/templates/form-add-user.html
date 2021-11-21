@@ -5,7 +5,26 @@
     <title>21 Cineplux</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-    </head>
+<!--    <script>-->
+<!--        var frm = document.querySelector('form.formAdd');-->
+<!--        var inputs = frm.querySelectorAll('input[type=email]');-->
+
+<!--        frm.addEventListener('submit', function(e) {-->
+<!--            e.preventDefault();-->
+<!--            var classArr = [];-->
+
+<!--            for(var i = 0; i < inputs.length; i++) {-->
+<!--                if(classArr.indexOf(inputs[i].value) != -1) {-->
+<!--                    inputs[i].style.backgroundColor = "red";-->
+<!--                    return false;-->
+<!--                }-->
+<!--                else-->
+<!--                    classArr.push(inputs[i].value);-->
+<!--            }-->
+<!--            frm.submit();-->
+<!--        });-->
+<!--    </script>-->
+</head>
 <body>
 <nav th:replace="fragments/fragment :: navbar('user')"></nav>
 <div class="container mt-4">
@@ -14,7 +33,7 @@
             <div class="card">
                 <div class="card-header">Tambah User Baru</div>
                 <div class="card-body">
-                    <form th:action="@{/user/add}" method="POST">
+                    <form th:action="@{/user/add}" method="POST" class="formAdd">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control" />
 
