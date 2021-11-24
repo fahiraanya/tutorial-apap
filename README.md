@@ -2,6 +2,39 @@
 ## Authors
 * **Fahira Anya Katili** - *1906399770* - *C*
 ---
+## Tutorial 6
+### Pertanyaan
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi adalah adalah proses verifikasi pengguna oleh sistem. Proses ini bertujuan untuk membuktikan identitas pengguna. Ketika pengguna memasukkan username dan password, itu adalah proses otentikasi. Implementasi otentikasi dalam kode terdapat pada class WebSecurityConfig.java, yaitu: 
+```
+@Autowired
+public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+}
+```
+Otorisasi terjadi setelah pengguna melewati proses otentikasi. Proses ini bertujuan untuk memberikan hak akses kepada pengguna untuk dapat mengakses resources atau data tertentu. Implementasinya dalam kode terdapat pada class WebSecurityConfig.java, misalnya:
+```
+.antMatchers("/user/viewall").hasAuthority("ADMIN")
+```
+* Potongan baris di atas berarti halaman dengan path user/viewall hanya dapat diakses oleh  pengguna dengan role ADMIN.
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+BCrypthPasswordEncoder adalah fungsi yang menggunakan algoritma BCrypt dan berfungsi sebagai password encoder. Dengan fungsi ini, password akan dienkripsi, kemudian hasilnya akan disimpan ke dalam database. Jika pengguna menyatakan bahwa mereka lupa akan password mereka, makan password yang sudah terenkripsi tersebuh harus dibuat dan disimpan ulang di database.
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa
+demikian?
+Hashing dan encryption menyediakan cara untuk menjaga keamanan data yang bersifat sensitif. Namun, hampi di setiap keadaan, password harus di-hash, bukan dienkripsi. Hashing merupakan fungsi satu arah yang cocok untuk password validation. Dengan begitu, walaupun penyerang berhasil mendapatkan hashed password pengguna, mereka tidak dapat memasukkannya ke field password dan login sebagai korban. 
+Berbeda dengan hashing, encryption merupakan fungsi dua arah, yang artinya plaintext orisinil datanya dapat dengan mudah diambil. Encryption lebih cocok digunakan untuk menyimpan data yang sifatnya tidak sensitif, misalnya alamat atau nomor telepon.
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+Universally Unique Identifier (UUID) merupakan 128 bit value yang digunakan untuk mengidentifikasi sebuah object atau entity secara unik. UUID dapat dijamin berbeda atau setidaknya sangat kecil probabilitasnya untuk terulang, tergantung pada mekanisme yang digunakan. Karena keunikannya, UUID digunakan untuk meningkatkan keamanan data pengguna. Id pengguna akan dibuat dengan hashing 32 karakter secara unik dan acak sehingga id tersebut akan sulit diretas.
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+padahal kita sudah memiliki class UserRoleServiceImpl.java?
+UserDetailsServiceImpl.java merupakan class yang mengimplementasikan interface UserDetailsService yang diimport dari org.springframework.security.core. Interface UserDetailsService tersebut digunakan sebagai user DAO untuk mengambil informasi autentikasi serta autorisasi pengguna. 
+
+---
 ## Tutorial 5
 ### Pertanyaan
 1. Apa itu Postman? Apa kegunaannya?
