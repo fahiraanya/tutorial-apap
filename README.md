@@ -2,6 +2,93 @@
 ## Authors
 * **Fahira Anya Katili** - *1906399770* - *C*
 ---
+## Tutorial 8
+### Pertanyaan
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian melakukan langkah - langkah tersebut?
+Saya tidak mengalami masalah tersebut sehingga tidak melakukan apapun untuk menanganinya.
+
+2. Jelaskan fungsi dari async dan await!
+Kedua fitur tersebut berfungsi untuk mempermudah proses asynchronous. Async berguna untuk mengubah suatu function menjadi asynchronous, sedangkan await berguna untuk menunda eksekusi hingga proses asynchronous tersebut selesai.
+Sumber: https://medium.com/coderupa/panduan-komplit-asynchronous-programming-pada-javascript-part-4-async-await-fc504c344238
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.
+Step | Screenshot
+------------- | -------------
+1 | https://ibb.co/fFmfGfg & https://ibb.co/K5w9RN1
+3 | https://ibb.co/Bgdsc5M
+6 | https://ibb.co/8YXmTmK
+7 | https://ibb.co/272BPN0
+8 | https://ibb.co/68YGSDP
+9 | https://ibb.co/94gJZgy (sebelum menambahkan `return true;` pada `shouldComponentUpdate`) & https://ibb.co/t8MHkRg (setelah menambahkan `return true;` pada `shouldComponentUpdate`)
+
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”.
+* `componentDidMount` dipanggil tepat setelah component dipasang (being mounted). Jika perlu untuk me-load data dari remote endpoint, fungsi ini baik digunakan untuk menginisiasi network requests.
+* `shouldComponentUpdate` dipanggil sebelum rendering, yaitu ketika props atau state baru sedang diterima. Fungsi ini digunakan untuk memberi tahu React bahwa output component tidak dipengaruhi oleh state atau props saat ini.
+* `componentDidUpdate` dipanggil tepat setelah terjadi update. Fungsi ini digunakakan untuk mengoperasikan DOM ketika component sudah di-update. Selain itu, fungsi ini juga baik untuk melakukan network requests.
+* `componentWillReceiveProps` dipanggil ketika component menerima props baru, tetapi sebelum me-render. 
+* `componentWillUnmount` dipanggil tepat sebelum component dihapus atau di-unmount. Fungsi ini digunakan untuk membersihkan seluruh connection requests ataupun subscription yang dibuat pada componentDidMount().
+Sumber: https://reactjs.org/docs/react-component.html dan https://www.digitalocean.com/community/tutorials/react-lifecycle-functions
+
+---
+## Tutorial 7
+### Pertanyaan
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+*Soal 1*
+Pada soal ini, saya diminta untuk memberikan fungsi pada button trash. Untuk itu, saya menambahkan function `handleDeleteItemFromCart` pada index.js Home maupun HomeFunc. Pada Home/index.js, saya membuat const cartItems yang merepresentasikan items yang ada pada cart saat ini dan membuat cartItemsBaru yang merepresentasikan items yang sudah difilter (items yang tidak di-click). Kemudian, ubah state dari cartItems menjadi cartItemsBaru. Setelah itu, baru panggil function update ShopItem() dengan `this.updateShopItem(cartItemBaru, false)`. Pada HomeFunc/index.js, saya hanya membuat const cartItemsBaru. Kemudian, untuk mengubah states, saya menggunakan `setCartItems(cartItemsBaru)`.
+Screenshot code: https://ibb.co/CV11YgJ
+
+*Soal 2*
+Pada soal nomor 2, saya diminta untuk menghandle berkurang atau bertambahnya balance ketika menambah ataupun menghapus item pada cart. Agar balance berkurang ketika memasukkan item ke dalam cart, saya menambahkan `balance : (prevState.balance-item.price)` pada. Sebaliknya, agar balance bertambah lagi ketika menghapus item dari cart, pada Home/index.js, saya menambahkan `balance: prevState.balance+intem.price` ketika mengubah state. Untuk HomeFunc/index.js, saya hanya menggunakan `setBalance((prev)=>prev+item.price);` ketika menghapus item dari cart dan `setBalance((prev)=>prev-item.price);` ketika menambah item ke cart.
+Screenshot code: https://ibb.co/vQdD1zh
+
+*Soal 3*
+Pada soal terakhir, saya diminta untuk menghandle apabila memasukkan item yang harganya melebihi balance yang dimiliki. untuk intu saya menambahkan condition `if ((this.state.balance-item.price) >= 0)` pada class-based dan `if (balance-item.price >= 0)` pada functional-based.
+Screenshot code: https://ibb.co/1zYZtMr
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+State merupakan data yang tersimpan dalam sebuah component secara private. State tidak dapat diakses dari atau oleh component lain karena hanya relevan terhadap component yang mendefinisikan state itu sendiri.
+Sedangkan props merupakan alat komunikasi antar component yang sifatnya read-only. Berbeda dengan state, data props dapat dilempar dari component lain.
+Sumber: https://medium.com/coderupa/react-prop-state-apa-bedanya-7ee61df8257f dan https://www.mahirkoding.com/tutorial-react-perbedaan-state-dan-props/
+
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+Salah satu alasan mengapa Reach sangat banyak digunakan oleh para developer adalah karena fitur component-based yang memungkinkan mereka untuk membuat encapsilated component. Component bersifat modular sehingga dapat digunakan berulang kali. Hal tersebut dapat mempersingkat waktu dan juga tenaga dalam pengembangan web.
+Sumber: https://www.softwareseni.co.id/blog/react-js
+
+4. Apa perbedaan class component dan functional component?
+Terdapat dua tipe component dalam React, yaitu Class Component dan Functional Component. Berikut contoh kode dari kedua tipe component.
+* Class Component
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello World</h1>
+      </div>
+    );
+  }
+}
+// kode dari hobikoding.github.io/component-react/
+
+* Functional Component
+function App(){
+  return(
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  )
+}
+// kode dari hobikoding.github.io/component-react/
+Jika dilihat secara sekilas, functional component memiliki kode yang lebih ringkas dan mudah dimengerti. Namun, sebenarnya terdapat perbedaan yang signifikan di antara kedua tipe component. Pada functional component, component hanya dapat menggunakan prop sehingga disebut *stateless component*. Sedangkan pada class component, dapat menggunakan prop dan juga state.
+Sumber: https://hobikoding.github.io/component-react/
+
+5. Dalam react, apakah perbedaan component dan element?
+Element merupakan unit terkecil dalam React dan biasanya didefinisikan sebagai representasi virtual dari DOM. Element bersifat immutable yang berarti attribute dan childrennya tidak dapat diubah setelah dibuat. Selain itu, kita juga tidak bisa menerapkan method apapun dalam element. Untuk menampilkan React element pada root DOM, element tersebut harus di-pass ke ```ReactDOM.render()```. Sedangkan component merupakan function atau class yang menerima sebuah input dan me-return sebuah element.
+Sumber: https://stackoverflow.com/questions/30971395/difference-between-react-component-and-react-element
+---
 ## Tutorial 6
 ### Pertanyaan
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
