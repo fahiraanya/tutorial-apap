@@ -38,6 +38,7 @@ class ItemList extends Component {
         this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
         this.handleToggle = this.handleToggle.bind(this);
         this.getCart = this.getCart.bind(this);
+        this.handleDeleteItem = this.handleDeleteItem.bind(this);
     }
     componentDidMount() {
         this.loadData();
@@ -165,6 +166,16 @@ class ItemList extends Component {
             console.log(error);
         }
     }
+    async handleDeleteItem(item) {
+        try {
+            const { data } = await APIConfig.delete("/item/" + item.id);
+            this.loadData();
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
+
     render() {
         return (
             <div className={classes.itemList}>
@@ -206,6 +217,7 @@ class ItemList extends Component {
                                         category={item.category}
                                         quantity={item.quantity}
                                         handleEdit = {() => (this.handleEditItem(item))}
+                                        handleDelete = {() => (this.handleDeleteItem(item))}
                                     />
                                 ))}
                             </div>
